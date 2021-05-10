@@ -5,9 +5,7 @@ from pipelines.utils import logging
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.getOrCreate()
-log = logging.Log4j(spark)
-
-log.warn("Testing started")    
+ 
 def test_transform():
 
     source_dataset1 = [
@@ -29,7 +27,7 @@ def test_transform():
                                                schema = schema_dataset2)
     
     expected_dataset = [
-        (105,"linfante2w@telegraph.co.uk","Netherlands","13j6FKzrLgumLUqeYH4baeY5qZgiwGW5UC","jcb")
+        (106,"linfante2w@telegraph.co.uk","Netherlands","13j6FKzrLgumLUqeYH4baeY5qZgiwGW5UC","jcb")
         ]
     
     schema_expected_dataset = ["client_identifier","email","country","bitcoin_address","credit_card_type"]
@@ -41,6 +39,12 @@ def test_transform():
     
     assert_df_equality(df_actual, df_expected)
     
+
+
+log = logging.Log4j(spark)
+
+log.warn("Testing started")   
+
 test_transform()
 
-print("Testing completed")
+log.warn("Testing finished")   
