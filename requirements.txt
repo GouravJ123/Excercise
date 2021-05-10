@@ -1,0 +1,4 @@
+pytest
+chispa
+pylint==2.3.1
+wheel
